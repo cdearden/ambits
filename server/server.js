@@ -8,7 +8,7 @@ var passport = require('passport');
 
 // To use on Heroku, set the environment variable:
 // $ heroku set:config MONGOLAB_URL=mongodb://user:password@mongolabstuff
-var db = (process.env.MONGOLAB_URL || 'mongodb://localhost/ambits');
+var db = (process.env.MONGOLAB_URL || 'mongodb://localhost/data/db');
 mongoose.connect(db);
 
 var Ambit = require('./ambitData/ambitSchema');
