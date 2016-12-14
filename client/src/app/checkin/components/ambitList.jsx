@@ -1,11 +1,14 @@
 import React from 'react';
 import Ambit from './ambit.jsx';
-
+import { nextOccurance } from '../../utils/utils.js'
 const AmbitList = (props) => {
-  return (<div className='ambitList'> 
+  return (<div className='ambitList'>
   {
-    props.ambits.map(item => 
-      (<Ambit ambit={item} handleCheckinAmbit={props.handleCheckinAmbit}/>))
+    props.ambits.map((item, i) =>
+      (<Ambit ambit={item} key={i} handleCheckinAmbit={props.handleCheckinAmbit}/>)).sort((a, b) => {
+        console.log('a',a);
+        return nextOccurance(a.props.ambit) - nextOccurance(b.props.ambit);
+      })
   }
   </div>);
 }
@@ -15,6 +18,4 @@ AmbitList.propTypes = {
   handleCheckinAmbit: React.PropTypes.func.isRequired
 };
 
-export default AmbitList;  
-
-
+export default AmbitList;
